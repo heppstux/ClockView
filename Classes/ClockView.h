@@ -17,6 +17,7 @@
 	CALayer *minHand;
 	CALayer *secHand;
 	NSTimer *timer;
+    CALayer * middleDot;
 
 }
 
@@ -29,6 +30,8 @@
 - (void)setMinHandImage:(CGImageRef)image;
 - (void)setSecHandImage:(CGImageRef)image;
 - (void)setClockBackgroundImage:(CGImageRef)image;
+
+@property (nonatomic) BOOL twentyFourMode;
 
 //to customize hands size: adjust following values in .m file
 //HOURS_HAND_LENGTH

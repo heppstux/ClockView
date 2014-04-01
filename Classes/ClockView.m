@@ -14,9 +14,14 @@
 
 #pragma mark - Public Methods
 
+@synthesize twentyFourMode;
+
 - (void)start
 {
-	timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateClock:) userInfo:nil repeats:YES];
+    [self updateClock:nil];
+    [timer invalidate];
+    timer = nil;
+	timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(updateClock:) userInfo:nil repeats:YES];
 }
 
 - (void)stop
@@ -29,8 +34,8 @@
 - (void)setHourHandImage:(CGImageRef)image
 {
 	if (image == NULL) {
-		hourHand.backgroundColor = [UIColor blackColor].CGColor;
-		hourHand.cornerRadius = 3;
+		hourHand.backgroundColor = SETTINGS_COLOR_TEXT_GREY.CGColor;
+		hourHand.cornerRadius = 0.0;
 	}else{
 		hourHand.backgroundColor = [UIColor clearColor].CGColor;
 		hourHand.cornerRadius = 0.0;
@@ -42,7 +47,7 @@
 - (void)setMinHandImage:(CGImageRef)image
 {
 	if (image == NULL) {
-		minHand.backgroundColor = [UIColor grayColor].CGColor;
+		minHand.backgroundColor = SETTINGS_COLOR_TEXT_GREY.CGColor;
 	}else{
 		minHand.backgroundColor = [UIColor clearColor].CGColor;
 	}
@@ -52,9 +57,9 @@
 - (void)setSecHandImage:(CGImageRef)image
 {
 	if (image == NULL) {
-		secHand.backgroundColor = [UIColor whiteColor].CGColor;
-		secHand.borderWidth = 1.0;
-		secHand.borderColor = [UIColor grayColor].CGColor;
+		secHand.backgroundColor = SETTINGS_COLOR_RED.CGColor;
+		secHand.borderWidth = 0.0;
+//		secHand.borderColor = [UIColor grayColor].CGColor;
 	}else{
 		secHand.backgroundColor = [UIColor clearColor].CGColor;
 		secHand.borderWidth = 0.0;
@@ -81,13 +86,14 @@
 
 //Default sizes of hands:
 //in percentage (0.0 - 1.0)
-#define HOURS_HAND_LENGTH 0.65
-#define MIN_HAND_LENGTH 0.75
-#define SEC_HAND_LENGTH 0.8
+#define HOURS_HAND_LENGTH 0.50
+#define MIN_HAND_LENGTH 0.88
+#define SEC_HAND_LENGTH 0.94
 //in pixels
-#define HOURS_HAND_WIDTH 10
-#define MIN_HAND_WIDTH 8
-#define SEC_HAND_WIDTH 4
+#define HOURS_HAND_WIDTH 6
+#define MIN_HAND_WIDTH 4
+#define SEC_HAND_WIDTH 1
+#define MIDDLE_DOT_SIZE 14.0
 
 float Degrees2Radians(float degrees) { return degrees * M_PI / 180; }
 
@@ -95,19 +101,23 @@ float Degrees2Radians(float degrees) { return degrees * M_PI / 180; }
 - (void) updateClock:(NSTimer *)theTimer{
 	
 	NSDateComponents *dateComponents = [[NSCalendar currentCalendar] components:(NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit) fromDate:[NSDate date]];
-	NSInteger seconds = [dateComponents second];
+    double timestamp = [[NSDate date] timeIntervalSince1970];
+    int64_t timeInMilisInt64 = (int64_t)(timestamp*1000) % 1000;
+	float seconds = [dateComponents second] + timeInMilisInt64/1000.0;
 	NSInteger minutes = [dateComponents minute];
 	NSInteger hours = [dateComponents hour];
-	//NSLog(@"raw: hours:%d min:%d secs:%d", hours, minutes, seconds);
-	if (hours > 12) hours -=12; //PM
-
+    
+    if (self.twentyFourMode || hours > 12) // 24clock mode adjust to twelve-oclock top middle, otherwise remember PM vs. AM
+    {
+        hours -=12;
+    }
 	//set angles for each of the hands
 	CGFloat secAngle = Degrees2Radians(seconds/60.0*360);
 	CGFloat minAngle = Degrees2Radians(minutes/60.0*360);
-	CGFloat hourAngle = Degrees2Radians(hours/12.0*360) + minAngle/12.0;
+	CGFloat hourAngle = Degrees2Radians(hours/(self.twentyFourMode?24.0:12.0)*360) + minAngle/(self.twentyFourMode?24.0:12.0);
 	
 	//reflect the rotations + 180 degres since CALayers coordinate system is inverted
-	secHand.transform = CATransform3DMakeRotation (secAngle+M_PI, 0, 0, 1);
+    secHand.transform = CATransform3DMakeRotation (secAngle+M_PI, 0, 0, 1);
 	minHand.transform = CATransform3DMakeRotation (minAngle+M_PI, 0, 0, 1);
 	hourHand.transform = CATransform3DMakeRotation (hourAngle+M_PI, 0, 0, 1);
 }
@@ -118,6 +128,7 @@ float Degrees2Radians(float degrees) { return degrees * M_PI / 180; }
     hourHand = [CALayer layer];
     minHand = [CALayer layer];
     secHand = [CALayer layer];
+    middleDot = [CALayer layer];
     
     //default appearance
     [self setClockBackgroundImage:NULL];
@@ -129,6 +140,7 @@ float Degrees2Radians(float degrees) { return degrees * M_PI / 180; }
     [containerLayer addSublayer:hourHand];
     [containerLayer addSublayer:minHand];
     [containerLayer addSublayer:secHand];
+    [containerLayer addSublayer:middleDot];
     [self.layer addSublayer:containerLayer];
 }
 
@@ -181,6 +193,11 @@ float Degrees2Radians(float degrees) { return degrees * M_PI / 180; }
 	minHand.anchorPoint = CGPointMake(0.5,0.0);
 	secHand.anchorPoint = CGPointMake(0.5,0.0);
 	containerLayer.anchorPoint = CGPointMake(0.5, 0.5);
+
+    middleDot.bounds = CGRectMake(0.0, 0.0 ,MIDDLE_DOT_SIZE,MIDDLE_DOT_SIZE);
+    middleDot.position = containerLayer.position;
+    middleDot.backgroundColor = SETTINGS_COLOR_TEXT_GREY.CGColor;
+    middleDot.cornerRadius = MIDDLE_DOT_SIZE / 2.0;
 }
 
 - (id)initWithFrame:(CGRect)frame
