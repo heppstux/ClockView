@@ -3,6 +3,20 @@
 ## Overview
 **ClockView** is s simple class that will simulate an analog (or wall like) clock. ClockView makes use of various CALayers so it needs CoreAnimation (add QuartzCore.framework)
 
+This Fork features a continuous running seconds hand as well as a 24-hour-clock mode.
+Furthermore it's available as a CocoaPod ready to be included in your project.
+
+## Installation via CocoaPods
+
+Simply add the following line to your Podfile:
+
+    pod 'ClockView', :git => 'https://github.com/heppstux/ClockView/'
+
+Then run:
+
+    pod install
+
+
 ## How to use
 It can be initialized with the default style:
 
@@ -25,6 +39,7 @@ Or it can be customized:
     ... do your thing here :)
     [clockView stop];
     [clockView release];
+    clockView.twentyFourMode = YES; // enables 24h-mode
 
 Example of ClockView. 
 *Big*: Customized style, 
