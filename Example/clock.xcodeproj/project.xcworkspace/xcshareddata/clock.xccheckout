@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>855173A9-3D54-47A9-B3CE-17D156F8BFEF</string>
+	<key>IDESourceControlProjectName</key>
+	<string>clock</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>BD96A1EB-BCAC-4C74-A9B1-1B3F34733EF3</key>
+		<string>ssh://lauschreich.com/stephan/clockview.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Example/clock.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>BD96A1EB-BCAC-4C74-A9B1-1B3F34733EF3</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://lauschreich.com/stephan/clockview.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>BD96A1EB-BCAC-4C74-A9B1-1B3F34733EF3</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>BD96A1EB-BCAC-4C74-A9B1-1B3F34733EF3</string>
+			<key>IDESourceControlWCCName</key>
+			<string>clockview</string>
+		</dict>
+	</array>
+</dict>
+</plist>

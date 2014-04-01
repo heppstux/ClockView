@@ -13,7 +13,6 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
-		9A34401812F5C3C1001EC7CE /* ClockView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A34401712F5C3C1001EC7CE /* ClockView.m */; };
 		9A34401A12F5C3E4001EC7CE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A34401912F5C3E4001EC7CE /* QuartzCore.framework */; };
 		9A365F081739476F006F38C6 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A365F071739476F006F38C6 /* Default-568h@2x.png */; };
 		9A7B5D3912FE0FB20071B463 /* libobjc.A.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A7B5D3812FE0FB20071B463 /* libobjc.A.dylib */; };
@@ -24,6 +23,7 @@
 		9AA50F4E13BF69AA0038B21E /* clock-min-background_.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AA50F4B13BF69AA0038B21E /* clock-min-background_.png */; };
 		9AA50F5013BF6E130038B21E /* clock-min-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AA50F4F13BF6E130038B21E /* clock-min-background.png */; };
 		9AA50F5213BF75D90038B21E /* clock-sec-background.png in Resources */ = {isa = PBXBuildFile; fileRef = 9AA50F5113BF75D90038B21E /* clock-sec-background.png */; };
+		F2105BE418EB28E900F7C1B6 /* ClockView.m in Sources */ = {isa = PBXBuildFile; fileRef = F2105BE318EB28E900F7C1B6 /* ClockView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,8 +37,6 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* clock_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = clock_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* clock-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "clock-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
-		9A34401612F5C3C1001EC7CE /* ClockView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClockView.h; sourceTree = "<group>"; };
-		9A34401712F5C3C1001EC7CE /* ClockView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClockView.m; sourceTree = "<group>"; };
 		9A34401912F5C3E4001EC7CE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		9A365F071739476F006F38C6 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		9A7B5D3812FE0FB20071B463 /* libobjc.A.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libobjc.A.dylib; path = usr/lib/libobjc.A.dylib; sourceTree = SDKROOT; };
@@ -50,6 +48,8 @@
 		9AA50F4B13BF69AA0038B21E /* clock-min-background_.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "clock-min-background_.png"; path = "Images/clock-min-background_.png"; sourceTree = "<group>"; };
 		9AA50F4F13BF6E130038B21E /* clock-min-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "clock-min-background.png"; path = "Images/clock-min-background.png"; sourceTree = "<group>"; };
 		9AA50F5113BF75D90038B21E /* clock-sec-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "clock-sec-background.png"; path = "Images/clock-sec-background.png"; sourceTree = "<group>"; };
+		F2105BE218EB28E900F7C1B6 /* ClockView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ClockView.h; path = ../Classes/ClockView.h; sourceTree = "<group>"; };
+		F2105BE318EB28E900F7C1B6 /* ClockView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ClockView.m; path = ../Classes/ClockView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,8 +73,6 @@
 			children = (
 				1D3623240D0F684500981E51 /* AppDelegate.h */,
 				1D3623250D0F684500981E51 /* AppDelegate.m */,
-				9A34401612F5C3C1001EC7CE /* ClockView.h */,
-				9A34401712F5C3C1001EC7CE /* ClockView.m */,
 				9AA50F4113BF47CA0038B21E /* ClockViewController.h */,
 				9AA50F4213BF47CA0038B21E /* ClockViewController.m */,
 				9AA50F4313BF47CA0038B21E /* ClockViewController.xib */,
@@ -125,6 +123,8 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F2105BE218EB28E900F7C1B6 /* ClockView.h */,
+				F2105BE318EB28E900F7C1B6 /* ClockView.m */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765A40DF7441C002DB57D /* CoreGraphics.framework */,
@@ -217,8 +217,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
+				F2105BE418EB28E900F7C1B6 /* ClockView.m in Sources */,
 				1D3623260D0F684500981E51 /* AppDelegate.m in Sources */,
-				9A34401812F5C3C1001EC7CE /* ClockView.m in Sources */,
 				9AA50F4413BF47CA0038B21E /* ClockViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
