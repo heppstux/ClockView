@@ -9,6 +9,8 @@
 
 #import "ClockView.h"
 
+#define SETTINGS_COLOR_RED [UIColor redColor]
+#define SETTINGS_COLOR_TEXT_GREY [UIColor blackColor]
 
 @implementation ClockView
 
@@ -130,6 +132,16 @@ float Degrees2Radians(float degrees) { return degrees * M_PI / 180; }
     secHand = [CALayer layer];
     middleDot = [CALayer layer];
     
+    hourHand.shouldRasterize = YES;
+    minHand.shouldRasterize = YES;
+    secHand.shouldRasterize = YES;
+    middleDot.shouldRasterize = YES;
+    
+    hourHand.rasterizationScale = [[UIScreen mainScreen] scale];
+    minHand.rasterizationScale = [[UIScreen mainScreen] scale];
+    secHand.rasterizationScale = [[UIScreen mainScreen] scale];
+    middleDot.rasterizationScale = [[UIScreen mainScreen] scale];
+
     //default appearance
     [self setClockBackgroundImage:NULL];
     [self setHourHandImage:NULL];
